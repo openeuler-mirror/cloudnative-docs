@@ -1,0 +1,14 @@
+label: 容器OS升级用户指南
+isManual: true
+description: KubeOS是专为容器化业务涉及的轻量级操作系统，支持原子化升级，确保版本一致性，降低运维复杂性
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 认识容器OS升级
+    href: ./about_kubeos.md
+  - label: 安装与部署
+    href: ./installation_and_deployment.md
+  - label: 使用方法
+    href: ./usage_instructions.md
+  - label: 容器OS镜像制作指导
+    href: ./kubeos_image_creation.md

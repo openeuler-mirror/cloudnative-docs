@@ -1,0 +1,35 @@
+label: Kubernetes集群部署指南
+isManual: true
+description: 在openEuler环境，为搭建稳定高效Kubernetes集群提供基本的操作指引
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 准备虚拟机
+    href: ./preparing_vms.md
+  - label: 手动部署集群
+    href: ./deploying_a_kubernets_cluster_manually.md
+    sections:
+      - label: 安装Kubernetes软件包
+        href: ./installing_the_kubernetes_software_package.md
+      - label: 准备证书
+        href: ./preparing_certificates.md
+      - label: 安装etcd
+        href: ./installing_etcd.md
+      - label: 部署控制面组件
+        href: ./deploying_control_plane_components.md
+      - label: 部署Node节点组件
+        href: ./deploying_a_node_component.md
+  - label: 自动部署集群
+    href: ./eggo_automatic_deployment.md
+    sections:
+      - label: 工具介绍
+        href: ./eggo_tool_introduction.md
+      - label: 部署集群
+        href: ./eggo_deploying_a_cluster.md
+      - label: 拆除集群
+        href: ./eggo_dismantling_a_cluster.md
+  - label: 运行测试pod
+    href: ./running_the_test_pod.md
+  - label: 基于containerd部署集群
+    href: ./kubernetes-containerd.md
+

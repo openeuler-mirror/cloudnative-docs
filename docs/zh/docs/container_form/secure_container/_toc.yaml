@@ -1,0 +1,19 @@
+label: 安全容器
+isManual: true
+description: 安全容器结合了虚拟化技术和容器技术，具有更好的隔离性
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 安装与配置
+    href: ./installation_and_deployment_2.md
+  - label: 使用方法
+    href: ./application_scenarios_2.md
+    sections:
+      - label: 管理安全容器的生命周期
+        href: ./managing_the_lifecycle_of_a_secure_container.md
+      - label: 为安全容器配置资源
+        href: ./configuring_resources_for_a_secure_container.md
+      - label: 监控安全容器
+        href: ./monitoring_secure_containers.md
+  - label: 附录
+    href: ./appendix_2.md
