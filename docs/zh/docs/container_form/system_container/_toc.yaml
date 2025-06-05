@@ -1,0 +1,36 @@
+label: 系统容器
+isManual: true
+description: 解决在重计算、高性能、大并发的场景下，重型应用和业务云化的问题
+sections:
+
+- label: 概述
+  href: ./overview.md
+- label: 安装指导
+  href: ./installation_guideline.md
+- label: 使用指南
+  href: ./usage_guide.md
+  sections:
+    - label: 指定rootfs创建容器
+      href: ./specifying_rootfs_to_create_a_container.md
+    - label: 通过systemd启动容器
+      href: ./using_systemd_to_start_a_container.md
+    - label: 容器内reboot/shutdown
+      href: ./reboot_or_shutdown_in_a_container.md
+    - label: cgroup路径可配置
+      href: ./configurable_cgroup_path.md
+    - label: namespace化内核参数可写
+      href: ./writable_namespace_kernel_parameters.md
+    - label: 共享内存通道
+      href: ./shared_memory_channels.md
+    - label: 动态加载内核模块
+      href: ./dynamically_loading_the_kernel_module.md
+    - label: 环境变量持久化
+      href: ./environment_variable_persisting.md
+    - label: 最大句柄数限制
+      href: ./maximum_number_of_handles.md
+    - label: 安全性和隔离性
+      href: ./security_and_isolation.md
+    - label: 容器资源动态管理
+      href: ./dynamically_managing_container_resources_syscontainer_tools.md
+- label: 附录
+  href: ./appendix_1.md

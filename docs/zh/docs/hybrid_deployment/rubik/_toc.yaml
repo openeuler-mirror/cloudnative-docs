@@ -1,0 +1,16 @@
+label: 云原生混合部署rubik用户指南
+isManual: true
+description: 在业务混合部署的场景下，根据QoS分级，对资源进行合理调度
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 安装与部署
+    href: ./installation_and_deployment.md
+  - label: 特性介绍
+    href: ./feature_introduction.md
+  - label: 配置文档
+    href: configuration.md
+  - label: ./混部隔离示例
+    href: ./example_of_isolation_for_hybrid_deployed_services.md
+  - label: 附录
+    href: ./appendix.md

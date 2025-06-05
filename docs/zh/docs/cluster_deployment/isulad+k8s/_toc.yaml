@@ -1,0 +1,12 @@
+label: iSulad+k8s集群部署指南
+isManual: true
+description: 在openEuler环境，基于iSulad容器引擎搭建Kubernetes集群
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: iSulad+k8s环境部署
+    href: ./isulad+k8s_environment_deploy.md
+  - label: gitlab部署
+    href: ./gitlab_deploy.md
+  - label: gitlab runner部署
+    href: ./gitlab_runner_deploy.md
