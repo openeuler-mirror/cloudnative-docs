@@ -1,0 +1,14 @@
+label: KubeOS User Guide
+isManual: true
+description: KubeOS is a lightweight OS tailored for containerized workloads. It enables atomic updates, maintains version uniformity, and simplifies O&M.
+sections:
+  - label: Overview
+    href: ./overview.md
+  - label: About KubeOS
+    href: ./about_kubeos.md
+  - label: Installation and Deployment
+    href: ./installation_and_deployment.md
+  - label: Usage Instructions
+    href: ./usage_instructions.md
+  - label: KubeOS Image Creation
+    href: ./kubeos_image_creation.md

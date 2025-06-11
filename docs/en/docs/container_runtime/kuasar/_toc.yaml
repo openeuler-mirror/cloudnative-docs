@@ -1,0 +1,12 @@
+label: Kuasar Multi_Sandbox Container Runtime
+isManual: true
+description: Kuasar enables unified management of diverse sandbox types and supports multiple leading sandbox isolation technologies used in the industry.
+sections:
+- label: Overview
+  href: ./overview.md
+- label: Installation and Configuration
+  href: ./kuasar_install_config.md
+- label: Usage Instructions
+  href: ./kuasar_usage.md
+- label: Appendix
+  href: ./kuasar_appendix.md
