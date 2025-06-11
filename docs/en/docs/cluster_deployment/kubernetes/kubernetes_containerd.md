@@ -265,7 +265,7 @@ Use `kubectl apply` to deploy the **kube-flannel.yml** file downloaded during th
 kubectl apply -f kube-flannel.yml
 ```
 
-> ![](./public_sys-resources/icon-note.gif)**Note**
+> ![Note](./public_sys-resources/icon-note.gif)**Note**
 >
 > The control plane may have taint issues, causing the node status in `kubectl get nodes` to remain "not ready." Refer to the [official documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) to remove taints.
 

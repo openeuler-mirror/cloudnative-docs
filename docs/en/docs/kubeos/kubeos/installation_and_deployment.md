@@ -14,7 +14,7 @@ This chapter describes how to install and deploy the KubeOS tool.
 
 ### Environment Preparation
 
-- Install the openEuler system. For details, see the [*openEuler Installation Guide*](../../../server/installation_upgrade/installation/installation_on_servers.md).
+- Install the openEuler system. For details, see the [*openEuler Installation Guide*](https://docs.openeuler.openatom.cn/en/docs/24.03_LTS_SP2/server/installation_upgrade/installation/installation_on_servers.html).
 - Install qemu-img, bc, Parted, tar, Yum, Docker, and dosfstools.
 
 ## KubeOS Installation
@@ -38,7 +38,7 @@ To install KubeOS, perform the following steps:
     # yum install KubeOS KubeOS-scripts -y
     ```
 
-> ![](./public_sys-resources/icon-note.gif)**NOTE**:
+> ![Note](./public_sys-resources/icon-note.gif)**Note**:
 >
 > KubeOS is installed in the **/opt/kubeOS** directory, including the os-operator, os-proxy, os-agent binary files, KubeOS image build tools, and corresponding configuration files.
 

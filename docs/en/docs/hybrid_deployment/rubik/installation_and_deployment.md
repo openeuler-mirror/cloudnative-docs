@@ -2,7 +2,7 @@
 
 ## Overview
 
-This chapter describes how to install and deploy the Rubik component, using openEUler 24.03 LTS SP1 as an exmaple.
+This chapter describes how to install and deploy the Rubik component, using openEUler 24.03 LTS SP1 as an example.
 
 ## Software and Hardware Requirements
 

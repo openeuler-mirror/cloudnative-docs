@@ -11,7 +11,7 @@ sections:
     href: ./deploying_a_kubernetes_cluster_manually.md
     sections:
       - label: Installing the Kubernetes Software Package
-        href: ./installing_the_Kubernetes_software_package.md
+        href: ./installing_the_kubernetes_software_package.md
       - label: Preparing Certificates
         href: ./preparing_certificates.md
       - label: Installing etcd

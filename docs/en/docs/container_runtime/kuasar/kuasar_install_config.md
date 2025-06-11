@@ -7,7 +7,7 @@
 - To obtain better performance experience, Kuasar must run on bare metal servers. **Currently, Kuasar cannot run on VMs.**
 - The running of Kuasar depends on the following openEuler components. Ensure that the dependent components of the required versions have been installed in the environment.
     - iSulad (See [Installation and Configuration](../../container_engine/isula_container_engine/installation_configuration.md) of iSulad.)
-    - StratoVirt (See [Installing StratoVirt](../../../virtualization/virtualization_platform/stratovirt/install_stratovirt.md))
+    - StratoVirt (See [Installing StratoVirt](https://docs.openeuler.org/en/docs/24.03_LTS_SP2/virtualization/virtualization_platform/stratovirt/install_stratovirt.html))
 
 ### Procedure
 

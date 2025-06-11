@@ -33,7 +33,7 @@ sections:
     - label: Checking the Container Health Status
       href: ./checking_the_container_health_status.md
     - label: Querying Information
-      href: ./querying_information.md
+      href: ./query_information.md
     - label: Security Features
       href: ./security_features.md
     - label: Supporting OCI hooks

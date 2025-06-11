@@ -109,9 +109,9 @@ Rubik allows you to configure the memory bandwidth and LLC cgroup for a service 
 
 > [!NOTE]Note
 >
-> 1. Cache limits apply to offline services only.
+> Cache limits apply to offline services only.
 >
-> 2. The manual annotation overrides the global one. If you set **defaultLimitMode** in the global Rubik configuration and specify the cache level in the YAML configuration of a pod, the actual dynCache limit is the one specified in the pod YAML configuration.
+> The manual annotation overrides the global one. If you set **defaultLimitMode** in the global Rubik configuration and specify the cache level in the YAML configuration of a pod, the actual dynCache limit is the one specified in the pod YAML configuration.
 
 ### dynCache Kernel Interface
 

@@ -10,7 +10,7 @@
 
 ## Preparing the Environment
 
-* Install the openEuler OS by referring to the [*openEuler Installation Guide*](../../../server/installation_upgrade/installation/installation_on_servers.md).
+* Install the openEuler OS by referring to the [*openEuler Installation Guide*](https://docs.openeuler.openatom.cn/en/docs/24.03_LTS_SP2/server/installation_upgrade/installation/installation_on_servers.html).
 
 * Root permissions are required for installing Kmesh.
 
