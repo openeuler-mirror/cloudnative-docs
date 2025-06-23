@@ -334,7 +334,7 @@ The **blkio.cost.qos** and **blkio.cost.model** file interfaces exist in the **b
 
 ### ioCost Implementation Description
 
-![](./figures/iocost.PNG)
+![](./figures/image.png)
 
 The procedure of the Rubik implementation is as follows:
 
