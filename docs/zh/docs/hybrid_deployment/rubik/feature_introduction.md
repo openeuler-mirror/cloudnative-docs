@@ -341,7 +341,7 @@ rubik 支持通过在 cgroup v1 下的 iocost 控制不同 Pod 的 io 权重分�
 
 ### ioCost实现说明
 
-![iocost implement](./figures/iocost.PNG)
+![iocost implement](./figures/image.png)
 
 步骤如下：
 
