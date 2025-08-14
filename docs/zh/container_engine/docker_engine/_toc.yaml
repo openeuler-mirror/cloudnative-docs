@@ -1,0 +1,24 @@
+label: Docker容器
+isManual: true
+description: Docker是一个开源的容器引擎项目，用以实现应用的快速打包、部署和交付
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 安装配置
+    href: ./installation_and_configuration_3.md
+  - label: 容器管理
+    href: ./container_management_1.md
+  - label: 镜像管理
+    href: ./image_management_1.md
+  - label: 命令行参考
+    href: ./command_reference.md
+    sections:
+      - label: 容器引擎
+        href: ./container_engine.md
+      - label: 容器管理
+        href: ./container_management_2.md
+      - label: 镜像管理
+        href: ./image_management_2.md
+      - label: 统计信息
+        href: ./statistics.md
+

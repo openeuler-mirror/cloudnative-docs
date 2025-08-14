@@ -1,0 +1,25 @@
+label: Docker Container
+isManual: true
+description: Docker is an open source container engine that facilitates quick application packaging, deployment, and delivery.
+sections:
+  - label: Overview
+    href: ./overview.md
+  - label: Installation and Configuration
+    href: ./installation_and_configuration_3.md
+  - label: Container Management
+    href: ./container_management_1.md
+  - label: Image Management
+    href: ./image_management_1.md
+  - label: Command Reference
+    href: ./command_reference.md
+    sections:
+      - label: Container Engine
+        href: ./container_engine.md
+      - label: Container Management
+        href: ./container_management_2.md
+      - label: Image Management
+        href: ./image_management_2.md
+      - label: Statistics
+        href: ./statistics.md
+  - label: Docker Common Docker Issues and Solutions
+    href: ./docker_faqs.md

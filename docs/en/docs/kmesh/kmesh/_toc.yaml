@@ -1,0 +1,16 @@
+label: Kmesh User Guide
+isManual: true
+description: High-performance service mesh data plane software for openEuler
+sections:
+  - label: Overview
+    href: ./overview.md
+  - label: Introduction to Kmesh
+    href: ./getting_to_know_kmesh.md
+  - label: Installation and Deployment
+    href: ./installation_and_deployment.md
+  - label: Usage
+    href: ./usage.md
+  - label: Common Issues and Solutions
+    href: ./faqs.md
+  - label: Appendix
+    href: ./appendixes.md

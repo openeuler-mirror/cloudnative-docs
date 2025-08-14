@@ -1,0 +1,14 @@
+label: Kmesh用户指南
+isManual: true
+description: openEuler系统高性能服务网格数据面软件
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 认识Kmesh
+    href: ./getting_to_know_kmesh.md
+  - label: 安装与部署
+    href: ./installation_and_deployment.md
+  - label: 使用方法
+    href: ./usage.md
+  - label: 附录
+    href: ./appendixes.md

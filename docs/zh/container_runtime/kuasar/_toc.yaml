@@ -1,0 +1,14 @@
+label: Kuasar多沙箱容器运行时
+isManual: true
+description: 一款支持多种类型沙箱统一管理的容器运行时，可同时支持多种业界主流的沙箱隔离技术
+sections:
+  - label: 概述
+    href: ./overview.md
+  - label: 安装与配置
+    href: ./kuasar_install_config.md
+  - label: 使用指南
+    href: ./kuasar_usage.md
+  - label: iSulad+Kuasar机密容器部署指南
+    href: ./isulad_kuasar_confidential_containers_deployment_guide.md
+  - label: 附录
+    href: ./kuasar_appendix.md

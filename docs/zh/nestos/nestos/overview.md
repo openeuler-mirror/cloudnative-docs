@@ -1,0 +1,4 @@
+# NestOS云底座操作系统
+
+本文介绍云底座操作系统NestOS For Container（下称NestOS）的安装部署与各个特性说明和使用方法，使用户能够快速了解并使用NestOS。NestOS For Virt的使用方法与通用操作系统使用方法一致，可参考欧拉官方文档。
+Nestos搭载了docker、iSulad、podman、cri-o等常见容器引擎，将ignition配置、rpm-ostree、OCI支持、SElinux强化等技术集成在一起，采用基于双系统分区、容器技术和集群架构的设计思路，可以适配云场景下多种基础运行环境。同时NestOS针对Kubernetes进行优化，在IaaS生态构建方面，针对openStack、oVirt等平台提供支持；在PaaS生态构建方面，针对OKD、Rancher等平台提供支持，使系统具备十分便捷的集群组建能力，可以更安全的运行大规模的容器化工作负载。

@@ -1,0 +1,36 @@
+label: Kubernetes Cluster Deployment Guide
+isManual: true
+description: This guide offers essential instructions for deploying a reliable and high_performance Kubernetes cluster on openEuler.
+sections:
+  - label: Overview
+    href: ./overview.md
+  - label: Preparing VMs
+    href: ./preparing_vms.md
+  - label: Manual Cluster Deployment
+    href: ./deploying_a_kubernetes_cluster_manually.md
+    sections:
+      - label: Installing the Kubernetes Software Package
+        href: ./installing_the_kubernetes_software_package.md
+      - label: Preparing Certificates
+        href: ./preparing_certificates.md
+      - label: Installing etcd
+        href: ./installing_etcd.md
+      - label: Deploying Components on the Control Plane
+        href: ./deploying_control_plane_components.md
+      - label: Deploying a Node Component
+        href: ./deploying_a_node_component.md
+  - label: Automatic Cluster Deployment
+    href: ./eggo_automatic_deployment.md
+    sections:
+      - label: Tool Introduction
+        href: ./eggo_tool_introduction.md
+      - label: Deploying a Cluster
+        href: ./eggo_deploying_a_cluster.md
+      - label: Dismantling a Cluster
+        href: ./eggo_dismantling_a_cluster.md
+  - label: Running the Test Pod
+    href: ./running_the_test_pod.md
+  - label: Kubernetes Cluster Deployment Guide Based on containerd
+    href: ./kubernetes_containerd.md
+  - label: Common Issues and Solutions
+    href: ./kubernetes_faqs.md
