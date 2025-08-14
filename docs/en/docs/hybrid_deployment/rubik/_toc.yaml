@@ -1,0 +1,12 @@
+label: Rubik User Guide
+isManual: true
+description: QoS-based resource allocation in hybrid servic deployment scenarios
+sections:
+  - label: Overview
+    href: ./overview.md
+  - label: Installation and Deployment
+    href: ./installation_and_deployment.md
+  - label: HTTP APIs
+    href: ./http_apis.md
+  - label: Example of Isolation for Hybrid Deployed Services
+    href: ./example_of_isolation_for_hybrid_deployed_services.md
