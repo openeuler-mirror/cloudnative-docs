@@ -7,7 +7,7 @@
 - 为了获取更好的性能体验，kuasar需要运行在裸金属服务器上，**暂不支持kuasar运行在虚拟机内**。
 - kuasar运行依赖以下openEuler组件，请确保环境上已安装所需版本的依赖组件。
     - iSulad（请参考iSula容器引擎的[安装与配置](../../container_engine/isula_container_engine/installation_configuration.md)章节安装iSulad）
-    - StratoVirt（请参考StratoVirt的[安装](https://docs.openeuler.org/zh/docs/24.03_LTS_SP2/virtualization/virtualization_platform/stratovirt/install_stratovirt.html)章节安装StratoVirt）
+    - StratoVirt（请参考StratoVirt的[安装](https://docs.openeuler.openatom.cn/zh/docs/24.03_LTS_SP2/virtualization/virtulization_platform/stratovirt/install_stratovirt.html)章节安装StratoVirt）
 
 ### 安装操作
 

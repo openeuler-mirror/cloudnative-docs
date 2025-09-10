@@ -52,7 +52,7 @@ docker启动容器时的默认umask值为0027，可以在dockerd启动时，使�
 >
 > 如果docker create/run也配置了native.umask参数，则以docker create/run中的配置为准。  
 
-详细的配置见[docker create](./容器管理-4.md#create)和[docker run](./容器管理-4.md#run)章节的参数说明。
+详细的配置见[docker create](./container_management_2.md#create)和[docker run](./container_management_2.md#run)章节的参数说明。
 
 ### daemon启动时间
 

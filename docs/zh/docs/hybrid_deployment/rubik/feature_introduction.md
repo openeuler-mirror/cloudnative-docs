@@ -146,9 +146,9 @@ dynCache 功能相关的配置如下：
 }
 ```
 
-配置参数详见[配置文档](./%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3.md#dyncache)。
+配置参数详见[配置文档](./configuration.md#dyncache)。
 
-- l3Percent 和 memBandPercent:
+- l3Percent 和 memBandPercent：
 
   通过 l3Percent 和 memBandPercent 配置 low, mid, high 控制组的水位线。
 
@@ -253,7 +253,7 @@ quotaTurbo 功能相关的配置如下：
 }
 ```
 
-配置参数详见[配置文档](./%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3.md#quotaturbo)。
+配置参数详见[配置文档](./configuration.md#quotaturbo)。
 
 - highWaterMark是CPU负载的高水位值。
 - alarmWaterMark是CPU负载的警戒水位值。
@@ -378,7 +378,7 @@ rubik 支持通过在 cgroup v1 下的 iocost 控制不同 Pod 的 io 权重分�
 }]
 ```
 
-配置参数详见[配置文档](./%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3.md#iocost)。
+配置参数详见[配置文档](./configuration.md#iocost)。
 
 > [!NOTE]说明
 >
@@ -442,7 +442,7 @@ reboot
 }
 ```
 
-配置参数详见[配置文档](./%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3.md#psi)。
+配置参数详见[配置文档](./configuration.md#psi)。
 
 ## CPU驱逐水位线控制
 
@@ -475,7 +475,7 @@ rubik支持通过根据节点CPU利用率驱逐离线Pod从而避免节点CPU资
 }
 ```
 
-配置参数详见[配置文档](./%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3.md#cpu驱逐水位线控制)。
+配置参数详见[配置文档](./configuration.md#cpu驱逐水位线控制)。
 
 ## 内存驱逐水位线控制
 
@@ -507,4 +507,4 @@ rubik支持通过根据节点内存利用率驱逐离线Pod从而避免节点内
 }
 ```
 
-配置参数详见[配置文档](./%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3.md#内存驱逐水位线控制)。
+配置参数详见[配置文档](./configuration.md#内存驱逐水位线控制)。

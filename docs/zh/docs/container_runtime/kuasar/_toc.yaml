@@ -10,6 +10,6 @@ sections:
 - label: 使用指南
   href: ./kuasar_usage.md
 - label: iSulad+Kuasar机密容器部署指南
-  href: ./isulad+kuasar-confidential-containers-deployment-guide.md
+  href: ./isulad_kuasar_confidential_containers_deployment_guide.md
 - label: 附录
   href: ./kuasar_appendix.md

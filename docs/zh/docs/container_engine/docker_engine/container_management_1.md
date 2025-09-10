@@ -288,7 +288,7 @@ docker run --name=container_registry -d -p 5000:5000 registry
 
 ### 原理及使用场景
 
-docker支持hook的扩展特性，hook应用与底层runc的执行过程中，遵循OCI标准：[https://github.com/opencontainers/runtime-spec/blob/main/config.md\#hooks](#https://github.com/opencontainers/runtime-spec/blob/main/config.md#hooks)  。
+docker支持hook的扩展特性，hook应用与底层runc的执行过程中，遵循OCI标准：[https://github.com/opencontainers/runtime-spec/blob/main/config.md\#hooks](https://github.com/opencontainers/runtime-spec/blob/main/config.md#hooks)。
 
 hook主要有三种类型：prestart，poststart，poststop。分别作用于容器内用户应用程序启动之前，容器应用程序启动之后，容器应用程序停止之后。
 

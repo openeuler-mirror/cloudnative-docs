@@ -16,7 +16,7 @@ Rubik supports the following features:
 - [Flexible Bandwidth](./feature_introduction.md#flexible-bandwidth)
     - [quotaTurbo User-Mode Solution](./feature_introduction.md#quotaburst-kernel-mode-solution)
     - [quotaTurbo Configuration](./feature_introduction.md#quotaturbo-user-mode-solution)
-- [I/O Weight Control Based on ioCost](./feature_introduction.md#io-weight-control-based-on-iocost)
+- [I/O Weight Control Based on ioCost](./feature_introduction.md#i-o-weight-control-based-on-iocost)
 - [Interference Detection Based on Pressure Stall Information Metrics](./feature_introduction.md#interference-detection-based-on-pressure-stall-information-metrics)
 - [CPU Eviction Watermark Control](./feature_introduction.md#cpu-eviction-watermark-control)
 - [Memory Eviction Watermark Control](./feature_introduction.md#memory-eviction-watermark-control)

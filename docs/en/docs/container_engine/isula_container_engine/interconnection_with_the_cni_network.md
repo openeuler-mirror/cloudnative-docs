@@ -75,8 +75,8 @@ The following is an example of the CNI network configuration method:
 
 The CNI network configuration includes two types, both of which are in the .json file format.
 
-- Single-network plane configuration file with the file name extension .conf or .json. For details about the configuration items, see  [Table 1](#cni-parameters.md#en-us_topic_0184347952_table425023335913)  in the appendix.
-- Multi-network plane configuration file with the file name extension .conflist. For details about the configuration items, see  [Table 3](#cni-parameters.md#en-us_topic_0184347952_table657910563105)  in the appendix.
+- Single-network plane configuration file with the file name extension .conf or .json. For details about the configuration items, see  [Table 1](appendix.md#en-us-topic-0184347952-table425023335913)  in the appendix.
+- Multi-network plane configuration file with the file name extension .conflist. For details about the configuration items, see  [Table 3](appendix.md#en-us_topic_0184347952_table657910563105)  in the appendix.
 
 ### Adding a Pod to the CNI Network List
 

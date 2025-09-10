@@ -92,7 +92,7 @@ The Kata container provides a global configuration file configuration.toml. User
 
 In the  **runtimeArges**  field of Docker engine, you can use  **--kata-config**  to specify a private file. The default configuration file path is  **/usr/share/defaults/kata-containers/configuration.toml**.
 
-The following lists the common fields in the configuration file. For details about the configuration file options, see  [configuration.toml](./appendix_2.md#configurationtoml).
+The following lists the common fields in the configuration file. For details about the configuration file options, see  [configuration.toml](./appendix_2.md#configuration-toml).
 
 1. hypervisor.qemu
     - **path**: specifies the execution path of the virtualization QEMU.
