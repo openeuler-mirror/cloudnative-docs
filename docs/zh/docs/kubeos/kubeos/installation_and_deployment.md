@@ -156,9 +156,9 @@
 
 #### 注意事项
 
-* 请先部署 Kubernetes 集群，部署方法参考[《openEuler 24.03-LTS-SP1 Kubernetes 集群部署指南》](../../cluster_deployment/kubernetes/overview.md)。
+* 请先部署 Kubernetes 集群，部署方法参考[《openEuler 24.03-LTS-SP2 Kubernetes 集群部署指南》](../../cluster_deployment/kubernetes/overview.md)。
 
-* 集群中准备进行升级的 Worker 节点的 OS 需要为使用上一节方式制作出来的容器 OS，如不是，请用 system.qcow2重新部署虚拟机，虚拟机部署请见[《openEuler 24.03-LTS-SP1 虚拟化用户指南》](https://docs.openeuler.org/zh/docs/24.03_LTS_SP2/virtualization/virtualization_platform/stratovirt/stratovirt_introduction.html)，Master节点目前不支持容器 OS 升级，请用openEuler 24.03-LTS-SP1部署Master节点。
+* 集群中准备进行升级的 Worker 节点的 OS 需要为使用上一节方式制作出来的容器 OS，如不是，请用 system.qcow2重新部署虚拟机，虚拟机部署请见[《openEuler 24.03-LTS-SP2 虚拟化用户指南》](https://docs.openeuler.openatom.cn/zh/docs/24.03_LTS_SP2/virtualization/virtulization_platform/stratovirt/stratovirt_introduction.html)，Master节点目前不支持容器 OS 升级，请用openEuler 24.03-LTS-SP1部署Master节点。
 * 部署 OS 的 CRD（CustomResourceDefinition），os-operator，os-proxy 以及 RBAC (Role-based access control) 机制的 YAML 需要用户自行编写。
 * operator 和 proxy 部署在 kubernetes 集群中，operator 应部署为 deployment，proxy 应部署为daemonset。
 * 尽量部署好 kubernetes 的安全措施，如 rbac 机制，pod 的 service account 和 security policy 配置等。

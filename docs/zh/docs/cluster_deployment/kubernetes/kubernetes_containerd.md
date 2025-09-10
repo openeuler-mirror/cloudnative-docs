@@ -213,7 +213,7 @@ $ vim kubeletConfig.yaml
 
 在kubeletConfig.yaml文件中，配置节点名称、广播地址（advertiseAddress）以及Pod网络的CIDR。
 <br>
-**修改name为主机名，与环境配置[第一步](#1-设置主机名)一致：**
+**修改name为主机名，与环境配置[第一步](#_1-设置主机名)一致：**
 <br>
 ![](./figures/name.png)
 <br>

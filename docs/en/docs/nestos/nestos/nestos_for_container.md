@@ -48,7 +48,7 @@ NestOS serves as an ideal foundation for cloud environments centered around cont
 
 (1) Obtain the nestos-assembler container image.
 
-You are advised the openEuler-based base image. For additional details, see [Section 6.1](#61-nestos-assembler-container-image-creation).
+You are advised the openEuler-based base image. For additional details, see [Section 6.1](#_6-1-nestos-assembler-container-image-creation).
 
 ```shell
 docker pull hub.oepkgs.net/nestos/nestos-assembler:24.03-LTS.20240903.0-aarch64
@@ -80,7 +80,7 @@ nosa init https://gitee.com/openeuler/nestos-config
 
 (4) Adjust build configurations.
 
-nestos-config provides default build configurations, so no additional steps are required. For customization, refer to [Section 5](#5-build-configuration-nestos-config).
+nestos-config provides default build configurations, so no additional steps are required. For customization, refer to [Section 5](#_5-build-configuration-nestos-config).
 
 (5) Build NestOS images.
 
@@ -95,7 +95,7 @@ nosa buildextend-metal4k
 nosa buildextend-live
 ```
 
-For detailed build and deployment steps, refer to [Section 6](#6-build-process).
+For detailed build and deployment steps, refer to [Section 6](#_6-build-process).
 
 ### 3.2 Quick Deployment
 
@@ -105,7 +105,7 @@ Using the NestOS ISO image as an example, boot into the live environment and exe
 sudo installnestos
 ```
 
-For alternative deployment methods, see [Section 8](#8-deployment-process).
+For alternative deployment methods, see [Section 8](#_8-deployment-process).
 
 ## 4. Default Configuration
 
@@ -138,7 +138,7 @@ The repository for nestos-config is located at <https://gitee.com/openeuler/nest
 
 #### 5.3.2 YAML Configuration Files
 
-YAML files in the directory provide various configurations for NestOS builds. For details, refer to [Section 5.4](#54-key-fields).
+YAML files in the directory provide various configurations for NestOS builds. For details, refer to [Section 5.4](#_5-4-key-fields).
 
 ### 5.4 Key Fields
 
@@ -153,7 +153,7 @@ YAML files in the directory provide various configurations for NestOS builds. Fo
 | postprocess                                 | Post-build scripts for the file system                                                                                            |
 | default-target                              | Default target, such as **multi-user.target**                                                                                     |
 | rojig.name, releasever                      | Image-related information (name and version)                                                                                      |
-| lockfile-repos                              | List of repository names available for builds, which must match the repository names in the repo files described in [Section 5.3.1](#531-repo-files) |
+| lockfile-repos                              | List of repository names available for builds, which must match the repository names in the repo files described in [Section 5.3.1](#_5-3-1-repo-files) |
 
 ### 5.5 Configurable Items
 
@@ -300,11 +300,11 @@ docker build -f Dockerfile . -t nestos-assembler:your_tag
 
 1. Prepare the nestos-assembler container image.
 
-    Once the nestos-assembler container image is built following [Section 6.1](#61-nestos-assembler-container-image-creation), it can be managed and distributed via a privately hosted container image registry. Ensure the correct version of the nestos-assembler container image is pulled before initiating the NestOS build.
+    Once the nestos-assembler container image is built following [Section 6.1](#_6-1-nestos-assembler-container-image-creation), it can be managed and distributed via a privately hosted container image registry. Ensure the correct version of the nestos-assembler container image is pulled before initiating the NestOS build.
 
 2. Create the nosa script.
 
-    To streamline user operations, you can write a `nosa` command script. This is particularly useful as the NestOS build process involves multiple calls to the nestos-assembler container image for executing various commands and configuring numerous parameters. For quick build details, see [Section 3.1](#31-quick-build).
+    To streamline user operations, you can write a `nosa` command script. This is particularly useful as the NestOS build process involves multiple calls to the nestos-assembler container image for executing various commands and configuring numerous parameters. For quick build details, see [Section 3.1](#_3-1-quick-build).
 
 #### 6.2.2 Usage Instructions
 
@@ -312,7 +312,7 @@ nestos-assembler commands
 
 |        Command        |                                       Description                                       |
 | :-------------------: | :-------------------------------------------------------------------------------------: |
-|         init          |   Initialize the build environment and configuration. See [Section 6.3](#63-build-environment-preparation) for details.    |
+|         init          |   Initialize the build environment and configuration. See [Section 6.3](#_6-3-build-environment-preparation) for details.    |
 |         fetch         | Fetch the latest software packages to the local cache based on the build configuration. |
 |         build         |         Build the ostree commit, which is the core command for building NestOS.         |
 |          run          |       Directly start a QEMU instance, using the latest build version by default.        |
@@ -338,7 +338,7 @@ nestos-assembler commands
 
 ### 6.3 Build Environment Preparation
 
-The NestOS build environment requires a dedicated empty folder as the working directory, supporting multiple builds while preserving and managing historical versions. Before setting up the build environment, ensure the build configuration is prepared (see [Section 5](#5-build-configuration-nestos-config)).
+The NestOS build environment requires a dedicated empty folder as the working directory, supporting multiple builds while preserving and managing historical versions. Before setting up the build environment, ensure the build configuration is prepared (see [Section 5](#_5-build-configuration-nestos-config)).
 
 You are advised to maintain a separate build configuration for each independent build environment. If you plan to build NestOS for various purposes, maintain multiple build configurations and their corresponding directories. This approach allows independent evolution of configurations and clearer version management.
 
@@ -374,7 +374,7 @@ The primary steps and reference commands for building NestOS are outlined below.
 
 #### 6.4.1 Initial Build
 
-For the initial build, the build environment must be initialized. Refer to [Section 6.3](#63-build-environment-preparation) for detailed instructions.
+For the initial build, the build environment must be initialized. Refer to [Section 6.3](#_6-3-build-environment-preparation) for detailed instructions.
 
 For subsequent builds, the existing build environment can be reused. Use `nosa list` to check the current versions and corresponding artifacts in the build environment.
 
@@ -711,7 +711,7 @@ When installing using the ISO image with the embedded Ignition file , NestOS wil
 
 #### 7.5.2 Pre-Integration of Ignition Files into PXE Images
 
-Prepare the NestOS PXE image locally. See [Section 6.5](#65-artifacts-acquisition) for details on obtaining the components. The remaining steps are the same as above.
+Prepare the NestOS PXE image locally. See [Section 6.5](#_6-5-artifacts-acquisition) for details on obtaining the components. The remaining steps are the same as above.
 
 To simplify the process for users, nestos-installer also supports extracting PXE components from an ISO image. Execute the following command, replacing `xxx.iso` with the local NestOS ISO image:
 
@@ -745,7 +745,7 @@ NestOS supports multiple deployment platforms and common deployment methods, cur
 
 #### 8.2.1 Creating a QCOW2 Instance with QEMU
 
-Prepare the NestOS QCOW2 image and the corresponding Ignition file (see [Section 7](#7-deployment-configuration) for details). Execute the following commands in the terminal:
+Prepare the NestOS QCOW2 image and the corresponding Ignition file (see [Section 7](#_7-deployment-configuration) for details). Execute the following commands in the terminal:
 
 ```shell
 IGNITION_CONFIG="/path/to/example.ign"
@@ -771,7 +771,7 @@ qemu-kvm -m 2048 -M pc -cpu host -nographic -drive if=virtio,file=my-nestos-vm.q
 
 Assuming the libvirt service is running normally and the network uses the default subnet bound to the `virbr0` bridge, you can follow these steps to create a NestOS instance.
 
-Prepare the NestOS QCOW2 image and the corresponding Ignition file (see [Section 7](#7-deployment-configuration) for details). Execute the following commands in the terminal:
+Prepare the NestOS QCOW2 image and the corresponding Ignition file (see [Section 7](#_7-deployment-configuration) for details). Execute the following commands in the terminal:
 
 ```shell
 IGNITION_CONFIG="/path/to/example.ign"
@@ -813,7 +813,7 @@ Prepare the NestOS ISO image and boot it. The first boot of the NestOS ISO image
 
 #### 8.3.2 Manually Installing the OS to the Target Drive Using the nestos-installer Command
 
-1. Prepare the Ignition file **example.ign** (see [Section 7](#7-deployment-configuration) for details).
+1. Prepare the Ignition file **example.ign** (see [Section 7](#_7-deployment-configuration) for details).
 
 2. Follow the printed instructions upon first entry into the NestOS live environment. Enter the following command to begin the installation:
 
@@ -833,7 +833,7 @@ Prepare the NestOS ISO image and boot it. The first boot of the NestOS ISO image
 
 ### 8.4 PXE Deployment
 
-The PXE installation components for NestOS include the kernel, **initramfs.img**, and **rootfs.img**. These components are generated using the `nosa buildextend-live` command (see [Section 6](#6-build-process) for details).
+The PXE installation components for NestOS include the kernel, **initramfs.img**, and **rootfs.img**. These components are generated using the `nosa buildextend-live` command (see [Section 6](#_6-build-process) for details).
 
 1. Use the PXELINUX `KERNEL` command to specify the kernel. A simple example is as follows:
 
@@ -847,7 +847,7 @@ The PXE installation components for NestOS include the kernel, **initramfs.img**
     APPEND initrd=nestos-live-initramfs.x86_64.img,nestos-live-rootfs.x86_64.img
     ```
 
-    **Note: If you have pre-integrated the Ignition file into the PXE components as described in [Section 7.5](#75-pre-integration-of-ignition-files), you only need to replace it here and skip the subsequent steps.**
+    **Note: If you have pre-integrated the Ignition file into the PXE components as described in [Section 7.5](#_7-5-pre-integration-of-ignition-files), you only need to replace it here and skip the subsequent steps.**
 
 3. Specify the installation location. For example, to use **/dev/sda**, append the following to the `APPEND` command:
 
@@ -951,7 +951,7 @@ nestos-assembler can provide OCI-compliant container images. Beyond simply packa
 
 - Basic steps
 
-1. Refer to [Section 6](#6-build-process) to build the NestOS container image, and use the `nosa push-container` command to push it to a public or private container image registry.
+1. Refer to [Section 6](#_6-build-process) to build the NestOS container image, and use the `nosa push-container` command to push it to a public or private container image registry.
 2. Write a Containerfile (Dockerfile) as shown in the following example:
 
     ```dockerfile

@@ -609,7 +609,7 @@ Use either of the following methods to configure ulimit:
 
 2. Use daemon parameters or configuration files.
 
-    For details, see **--default-ulimits** in  [Configuration Mode](installation-configuration.md#configuration-mode).
+    For details, see **--default-ulimits** in  [Configuration Mode](installation_configuration.md#configuration-mode).
 
     **--ulimit**  can limit the following types of resources:
 

@@ -89,7 +89,7 @@ Options:
   | primary_groups | [可选项] 用户主组(默认为用户同名组) |
   | groups | [可选项] 用户附加组 |
 
-**注意**：添加用户会默认创建用户同名组，配置用户附加组时，若组不存在会报错失败。若有特殊配置需求，用户可通过[chroot_script](#chroot_script)脚本自行实现。
+**注意**：添加用户会默认创建用户同名组，配置用户附加组时，若组不存在会报错失败。若有特殊配置需求，用户可通过[chroot_script](#chroot-script)脚本自行实现。
 
 #### copy_files
 
@@ -101,7 +101,7 @@ Options:
   | src | 源文件路径 |
   | create_dir | [可选项]拷贝前创建文件夹 |
 
-**注意**：拷贝文件无法保留权限，如果需要特殊权限，可借助[chroot_script](#chroot_script)脚本自行实现。
+**注意**：拷贝文件无法保留权限，如果需要特殊权限，可借助[chroot_script](#chroot-script)脚本自行实现。
 
 #### grub
 
@@ -273,7 +273,7 @@ version = "v1"
 #### 注意事项
 
 * 制作出来的容器 OS 物理安装所需的镜像目前只能用于 CPU 架构为 x86 和 AArch64 的物理机安装。
-* `pxe_config`配置中指定的ip为安装时使用的临时ip,请在系统安装启动后请参考[《openEuler 24.03-LTS-SP1 管理员指南-配置网络》](https://docs.openeuler.org/zh/docs/24.03_LTS_SP2/server/network/network_config/network-configuration.html)进行网络配置。
+* `pxe_config`配置中指定的ip为安装时使用的临时ip，请在系统安装启动后请参考[《openEuler 24.03-LTS-SP2 管理员指南-配置网络》](https://docs.openeuler.org/zh/docs/24.03_LTS_SP2/server/network/network_config/network_configuration.html)进行网络配置。
 * 不支持多个磁盘都安装KubeOS，可能会造成启动失败或挂载紊乱。
 * 容器OS 目前不支持 x86 架构的物理机使用 legacy 启动模式启动。
 * 使用默认rpmlist进行镜像制作时所需磁盘空间至少为5G，如自已定义 rpmlist 可能会超过5G。
@@ -282,7 +282,7 @@ version = "v1"
 
 #### 使用示例
 
-* 首先需要修改```kbimg.toml```中```pxe_config```的配置，对相关参数进行配置，详细参数可见[参数说明](#pxe_config)，ip目前仅支持ipv4，配置示例如下
+* 首先需要修改```kbimg.toml```中```pxe_config```的配置，对相关参数进行配置，详细参数可见[参数说明](#pxe-config)，ip目前仅支持ipv4，配置示例如下
 
   ```toml
   [pxe_config]

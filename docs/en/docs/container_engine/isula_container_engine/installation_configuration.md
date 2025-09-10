@@ -852,7 +852,7 @@ To use the devicemapper storage driver, you need to configure a thinpool device 
 2. Modify configuration files.
 
     Two configuration methods are provided. Select one based on site requirements.
-    - Edit the  **/etc/isulad/daemon.json**  file, set  **storage-driver**  to  **devicemapper**, and set parameters related to the  **storage-opts**  field. For details about related parameters, see  [Parameter Description](#en-us_topic_0222861454_section1712923715282). The following lists the configuration reference:
+    - Edit the  **/etc/isulad/daemon.json**  file, set  **storage-driver**  to  **devicemapper**, and set parameters related to the  **storage-opts**  field. For details about related parameters, see  [Parameter Description](#parameter-description). The following lists the configuration reference:
 
     ```json
     {
@@ -865,7 +865,7 @@ To use the devicemapper storage driver, you need to configure a thinpool device 
     }
     ```
 
-    - Edit  **/etc/sysconfig/iSulad**  to explicitly specify related iSulad startup parameters. For details about related parameters, see  [Parameter Description](#en-us_topic_0222861454_section1712923715282). The following lists the configuration reference:
+    - Edit  **/etc/sysconfig/iSulad**  to explicitly specify related iSulad startup parameters. For details about related parameters, see  [Parameter Description](#parameter-description). The following lists the configuration reference:
 
     ```ini
     OPTIONS="--storage-driver=devicemapper --storage-opt dm.thinpooldev=/dev/mapper/isula-thinpool --storage-opt dm.fs=ext4 --storage-opt dm.min_free_space=10%"

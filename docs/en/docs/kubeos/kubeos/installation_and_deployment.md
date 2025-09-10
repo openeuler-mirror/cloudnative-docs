@@ -38,8 +38,8 @@ To install KubeOS, perform the following steps:
     # yum install KubeOS KubeOS-scripts -y
     ```
 
-> ![Note](./public_sys-resources/icon-note.gif)**Note**:
->
+> [!NOTE]Note
+> 
 > KubeOS is installed in the **/opt/kubeOS** directory, including the os-operator, os-proxy, os-agent binary files, KubeOS image build tools, and corresponding configuration files.
 
 ## KubeOS Deployment

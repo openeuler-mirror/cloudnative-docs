@@ -5,7 +5,7 @@ sections:
   - label: 概述
     href: ./overview.md
   - label: iSulad+k8s环境部署
-    href: ./isulad+k8s_environment_deploy.md
+    href: ./isulad_k8s_environment_deploy.md
   - label: gitlab部署
     href: ./gitlab_deploy.md
   - label: gitlab runner部署

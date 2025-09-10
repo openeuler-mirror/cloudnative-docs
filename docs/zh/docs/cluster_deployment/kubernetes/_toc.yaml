@@ -7,7 +7,7 @@ sections:
   - label: 准备虚拟机
     href: ./preparing_vms.md
   - label: 手动部署集群
-    href: ./deploying_a_kubernets_cluster_manually.md
+    href: ./deploying_a_kubernetes_cluster_manually.md
     sections:
       - label: 安装Kubernetes软件包
         href: ./installing_the_kubernetes_software_package.md
@@ -31,5 +31,4 @@ sections:
   - label: 运行测试pod
     href: ./running_the_test_pod.md
   - label: 基于containerd部署集群
-    href: ./kubernetes-containerd.md
-
+    href: ./kubernetes_containerd.md

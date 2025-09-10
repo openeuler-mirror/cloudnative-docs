@@ -61,8 +61,8 @@
   | clientcert     | string | https双向认证时使用的客户端证书文件                          | 仅在使用https双向认证时有效|mtls为true时必选 |
   | clientkey      | string | https双向认证时使用的客户端公钥                              | 仅在使用https双向认证时有效|mtls为true时必选 |
   | evictpodforce      | bool | 升级/回退时是否强制驱逐pod                            | 需为 true 或者 false ，仅在升级或者回退时有效| 必选 |
-  | sysconfigs      | / | 配置设置                          | 1. “opstype=config”时只进行配置。<br>  2.“opstype=upgrade/rollback”时，代表升级/回退后配置，即在升级/回退重启后进行配置，详细字段说明请见[配置（Settings）指导](#配置settings指导) | “opstype=config”时必选 |
-  | upgradeconfigs | / | 升级前配置设置                       | 在升级或者回退时有效，在升级或者回退操作之前起效，详细字段说明请见[配置（Settings）指导](#配置settings指导)| 可选 |
+  | sysconfigs      | / | 配置设置                          | 1. “opstype=config”时只进行配置。<br>  2.“opstype=upgrade/rollback”时，代表升级/回退后配置，即在升级/回退重启后进行配置，详细字段说明请见[配置（Settings）指导](#配置-settings-指导) | “opstype=config”时必选 |
+  | upgradeconfigs | / | 升级前配置设置                       | 在升级或者回退时有效，在升级或者回退操作之前起效，详细字段说明请见[配置（Settings）指导](#配置-settings-指导)| 可选 |
   | nodeselector      | string | 需要进行升级/配置/回滚操作的节点label                           | 用于只对具有某些特定label的节点而不是集群所有worker节点进行运维的场景，需要进行运维操作的节点需要包含key为upgrade.openeuler.org/node-selector的label，nodeselector为该label的value值。<br>注意事项：<br> 1.此参数不配置时，或者配置为“no-label”时对没有upgrade.openeuler.org/node-selector的节点进行操作<br> 2.此参数为“”时，对具有upgrade.openeuler.org/node-selector=“”的节点进行操作 <br> 3.如需忽略label，对所有节点进行操作，需指定此参数为all-label| 可选 |
   | timewindow      | / | 升级/配置/回滚操作的时间窗口                           |1.指定时间窗口时starttime和endtime都需指定，即二者需要同时为空或者同时不为空<br> 2.starttime和endtime类型为string，需要为YYYY-MM-DD HH:MM:SS格式或者HH:MM:SS格式，且二者格式需一致<br> 3.为HH:MM:SS格式时，starttime 小于endtime认为starttime是下一天的该时间<br> 4.timewindow不配置时默认为不存在时间窗限制| 可选 |
   | timeinterval      | int | 升级/配置/回滚操作每批次任务下发的时间间隔                           |参数单位为秒，时间间隔为operator下发任务的时间间隔，如k8s集群繁忙无法立即响应operator请求，实际时间间隔可能会大于指定时间| 可选 |
@@ -141,7 +141,7 @@
 
         * 升级并且进行配置的示例如下：
 
-            * 以节点容器引擎为containerd为例，升级方式对配置无影响，upgradeconfigs在升级前起效，sysconfigs在升级后起效，配置参数说明请见[配置（Settings）指导](#配置settings指导)。
+            * 以节点容器引擎为containerd为例，升级方式对配置无影响，upgradeconfigs在升级前起效，sysconfigs在升级后起效，配置参数说明请见[配置（Settings）指导](#配置-settings-指导)。
             * 升级并且配置时opstype字段需为upgrade。
             * upgradeconfig为升级之前执行的配置，sysconfigs为升级机器重启后执行的配置，用户可按需进行配置。
 
