@@ -1,6 +1,6 @@
 label: iSula容器引擎
 isManual: true
-description: 在iSula是使用C/C++实现的容器引起，具有轻、灵、巧、快的特点
+description: 在iSula是使用C/C++实现的容器引擎，具有轻、灵、巧、快的特点
 sections:
 
 - label: 概述
