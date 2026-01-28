@@ -2,11 +2,9 @@ label: iSula容器引擎
 isManual: true
 description: 在iSula是使用C/C++实现的容器引擎，具有轻、灵、巧、快的特点
 sections:
-
 - label: 概述
   href: ./overview.md
 - label: 安装、升级与卸载
-  href: ./installation_upgrade_uninstallation.md
   sections:
     - label: 安装与配置
       href: ./installation_configuration.md
@@ -14,8 +12,7 @@ sections:
       href: ./upgrade_methods.md
     - label: 卸载
       href: ./uninstallation.md
-- label: 使用指南
-  href: ./application_scenarios.md
+- label: 使用说明
   sections:
     - label: 容器管理
       href: ./container_management.md

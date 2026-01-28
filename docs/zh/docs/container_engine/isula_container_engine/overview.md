@@ -7,3 +7,6 @@ iSula通用容器引擎相比Docker，是一种新的容器解决方案，提供
 **图 1**  容器统一架构<a name="zh-cn_topic_0182207099_fig10763114141217"></a>  
 
 ![](./figures/zh-cn_image_0183048952.png)
+
+> [!NOTE]说明
+> iSulad的所有使用操作均需要使用root权限。
