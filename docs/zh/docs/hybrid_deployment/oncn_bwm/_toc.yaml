@@ -2,5 +2,5 @@ label: oncn-bwm用户指南
 isManual: true
 description: 混合业务场景下的Pod带宽管理方案
 sections:
-  - label: 概述
+  - label: oncn-bwm用户指南
     href: ./overview.md

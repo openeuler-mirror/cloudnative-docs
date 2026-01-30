@@ -2,14 +2,14 @@ label: 系统容器
 isManual: true
 description: 解决在重计算、高性能、大并发的场景下，重型应用和业务云化的问题
 sections:
-
 - label: 概述
   href: ./overview.md
-- label: 安装指导
+- label: 安装
   href: ./installation_guideline.md
-- label: 使用指南
-  href: ./usage_guide.md
+- label: 使用说明
   sections:
+    - label: 使用概述
+      href: ./usage_guide.md
     - label: 指定rootfs创建容器
       href: ./specifying_rootfs_to_create_a_container.md
     - label: 通过systemd启动容器

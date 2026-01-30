@@ -8,9 +8,9 @@ sections:
     href: ./installation_and_deployment.md
   - label: 特性介绍
     href: ./feature_introduction.md
-  - label: 配置文档
-    href: configuration.md
-  - label: ./混部隔离示例
+  - label: Rubik配置说明
+    href: ./configuration.md
+  - label: 混部隔离示例
     href: ./example_of_isolation_for_hybrid_deployed_services.md
   - label: 附录
     href: ./appendix.md
