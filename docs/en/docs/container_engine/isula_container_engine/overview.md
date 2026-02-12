@@ -7,3 +7,6 @@ Compared with Docker, iSulad is a new container solution with a unified architec
 **Figure  1**  Unified container architecture<a name="en-us_topic_0182207099_fig10763114141217"></a>  
 
 ![](./figures/en-us_image_0183048952.png)
+
+> [!NOTE]NOTE
+> All iSulad operations require root privileges.

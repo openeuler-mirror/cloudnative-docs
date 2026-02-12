@@ -7,8 +7,9 @@ sections:
   - label: Installation Guideline
     href: ./installation_guideline.md
   - label: Usage Guide
-    href: ./usage_guide.md
     sections:
+      - label: Overview
+        href: ./usage_guide.md
       - label: Specifying Rootfs to Create a Container
         href: ./specifying_rootfs_to_create_a_container.md
       - label: Using systemd to Start a Container
