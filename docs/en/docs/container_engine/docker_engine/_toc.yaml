@@ -12,7 +12,6 @@ sections:
   - label: Image Management
     href: ./image_management_1.md
   - label: Command Reference
-    href: ./command_reference.md
     sections:
       - label: Container Engine
         href: ./container_engine.md

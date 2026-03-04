@@ -5,7 +5,6 @@ sections:
 - label: Overview
   href: ./overview.md
 - label: Installation, Upgrade, and Uninstallation
-  href: ./installation_upgrade_uninstallation.md
   sections:
     - label: Installation and Configuration
       href: ./installation_configuration.md
@@ -14,7 +13,6 @@ sections:
     - label: Uninstallation
       href: ./uninstallation.md
 - label: User Guide
-  href: ./application_scenarios.md
   sections:
     - label: Container Management
       href: ./container_management.md

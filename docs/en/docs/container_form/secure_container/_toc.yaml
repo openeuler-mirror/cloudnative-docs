@@ -7,7 +7,6 @@ sections:
   - label: Installation and Deployment
     href: ./installation_and_deployment_2.md
   - label: Application Scenarios
-    href: ./application_scenarios_2.md
     sections:
       - label: Managing the Lifecycle of a Secure Container
         href: ./managing_the_lifecycle_of_a_secure_container.md
