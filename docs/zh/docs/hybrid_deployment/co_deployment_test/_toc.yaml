@@ -1,0 +1,7 @@
+label: 在离线混合部署测试用户指南
+isManual: true
+description: 混合部署场景下的标准化测试方案，覆盖CPU、内存、IO、网络等资源。
+sections:
+  - label: 概述
+    href: ./overview.md
+
