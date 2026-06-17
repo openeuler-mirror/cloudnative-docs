@@ -1,3 +1,0 @@
-[codespell]
-ignore-words-list = sofARPC,nosmtexpell,sysbenchmark,rlat,wlat,rpct,wpct,iperf,thrpt,avgt,gbits
-skip = *.git,*.pdf,*.svg,*.png,*.jpg
