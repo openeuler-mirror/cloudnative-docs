@@ -41,6 +41,7 @@ openEuler在离线混合部署（简称：混部）特性可以帮助用户提�
 | 网络混部模型 | iperf3  | iperf3         | BWM带宽管控                    |
 
 ### CPU混部测试
+
 #### CPU QOS隔离配置
 
 1、cpu抢占压制
@@ -60,6 +61,7 @@ echo -1 > cpu.qos_level
 特点：稳定模拟各种cpu利用率的任务
 
 ### 内存混部测试
+
 #### 内存 QOS隔离配置
 
 * 1、OOM分级查杀
@@ -69,7 +71,7 @@ echo 1 > /proc/sys/vm/memcg_qos_enable
 echo -1 > memory.qos_level
 
 * 2、内存异步回收
-内存超过memory.high * memory.high_async_ratio / 100的时候开始异步回收，回收到memory.high * (memory.high_async_ratio – 10 ) /100这个值结束
+内存超过memory.high*memory.high_async_ratio/100的时候开始异步回收，回收到memory.high*(memory.high_async_ratio–10)/100这个值结束
 （1）配置memory.high                                //参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
 （2）配置memory.high_async_ratio                    //警戒水位线和安全水位线设置
 
@@ -82,6 +84,7 @@ echo -1 > memory.qos_level
 特点：稳定模拟持续消耗内存任务
 
 ### IO混部测试
+
 #### IO QOS隔离配置
 
 * 1、IO Cost方案
@@ -180,7 +183,6 @@ Formula: Interference Rate = (Online - Test) / Online x 100%
 
 * 结论：混部内存隔离后，QPS干扰率从4.32%下降到-2.07%，平均时延干扰率从4.51%下降到-2.01%，P95时延干扰率从26.38%下降到5.55%。
 
-
 ### IO混部测试结果示例
 
 #### Sysbench Interference Analysis
@@ -224,7 +226,7 @@ SOFARPC（Scalable Open Financial Architecture Remote Procedure Call）是蚂蚁
 
 ### 项目地址
 
-Gitee: https://gitee.com/sofastack/sofa-rpc/
+Gitee: [sofa-rpc](https://gitee.com/sofastack/sofa-rpc/)
 
 ### 核心特性
 
@@ -262,7 +264,7 @@ SOFARPC 采用经典的服务注册/发现/调用架构，核心组件包括服�
 
 本测试套使用 SOFARPC Benchmark 套件进行性能压测，通过模拟服务提供者与服务消费者之间的 RPC 调用，采集 TPS（吞吐量）、平均 RT（响应时间）、P99 时延等核心指标，并与在线独占运行（Online Test Only）的基线数据进行对比，计算混部干扰率：
 
-```
+```text
 干扰率 = (Online 指标 - 混部指标) / Online 指标 × 100%
 ```
 
