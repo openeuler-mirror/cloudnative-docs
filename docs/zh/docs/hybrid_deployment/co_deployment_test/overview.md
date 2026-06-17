@@ -29,11 +29,9 @@ openEuler在离线混合部署（简称：混部）特性可以帮助用户提�
 
 * 安装 docker 。
 
-  
-
 ## 混部特性介绍
 
-#### 典型混部测试模型
+### 典型混部测试模型
 
 | 测试模型     | online  | offline        | 相关内核技术                   |
 | ------------ | ------- | -------------- | ------------------------------ |
@@ -42,9 +40,8 @@ openEuler在离线混合部署（简称：混部）特性可以帮助用户提�
 | IO混部模型   | MYSQL   | fio            | IO InFlight限速 或 IO Cost限速 |
 | 网络混部模型 | iperf3  | iperf3         | BWM带宽管控                    |
 
-
-#### CPU混部测试
-###### CPU QOS隔离配置
+### CPU混部测试
+#### CPU QOS隔离配置
 
 1、cpu抢占压制
 配置在离线标识（在线：0 ，离线：-1）
@@ -54,15 +51,16 @@ echo -1 > cpu.qos_level
 依赖cpu.qos_level配置，默认使能
 关闭方式：内核启动参数cmdline配置添加 nosmtexpell
 
-###### CPU测试套工具选取
+#### CPU测试套工具选取
+
 * 在线业务：sofarpc-benchmark
 特点：java工具，业务时延敏感，开源可修改
 
 * 离线业务：stress-ng
 特点：稳定模拟各种cpu利用率的任务
 
-#### 内存混部测试
-###### 内存 QOS隔离配置
+### 内存混部测试
+#### 内存 QOS隔离配置
 
 * 1、OOM分级查杀
 （1）配置使能
@@ -75,7 +73,7 @@ echo -1 > memory.qos_level
 （1）配置memory.high                                //参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
 （2）配置memory.high_async_ratio                    //警戒水位线和安全水位线设置
 
-###### 内存测试套工具选取
+#### 内存测试套工具选取
 
 * 在线业务：mysql + sysbenchmark
 特点：业务性能对内存使用敏感
@@ -83,8 +81,8 @@ echo -1 > memory.qos_level
 * 离线业务：stress-ng
 特点：稳定模拟持续消耗内存任务
 
-#### IO混部测试
-###### IO QOS隔离配置
+### IO混部测试
+#### IO QOS隔离配置
 
 * 1、IO Cost方案
 IO cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
@@ -107,7 +105,7 @@ echo "8:0 enable=1 qos_enable=1 rlat=5000000 rpct=95 wlat=5000000 wpct=95 flags=
 （2）权重配置
 echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
 
-###### IO测试套选取
+#### IO测试套选取
 
 * 在线业务：mysql + sysbenchmark
 特点：业务性能对IO带宽敏感
@@ -115,9 +113,10 @@ echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
 * 离线业务：fio
 特点：标准测试工具，稳定模拟持续消耗IO带宽任务
 
-#### 网络混部测试
+### 网络混部测试
 
-###### 网络 QOS隔离配置
+#### 网络 QOS隔离配置
+
 1、配置在离线标识（在线：0 ，离线：-1）
 bwmcli -s /sys/fs/cgroup/net_cls/xxxx -1
 2、限制离线网络带宽
@@ -129,16 +128,17 @@ bwmcli -e eth0 -e eth1
 5、去使能网络带宽隔离配置
 bwmcli -d eth0 -d eth1
 
-###### 网络测试套工具选取
+#### 网络测试套工具选取
+
 * 在线业务：iperf
 * 离线业务：iperf
 特点：测试网络带宽的通用工具
 
 ## 混部测试结果示例
 
-#### CPU混部测试结果示例
+### CPU混部测试结果示例
 
-###### Benchmark Interference Analysis
+#### Benchmark Interference Analysis
 
 * Original Data
 
@@ -157,9 +157,9 @@ bwmcli -d eth0 -d eth1
 
 结论：混部CPU隔离后，在线业务QPS干扰率从14.18%下降到4.73%，平均时延干扰从17.26%下降到4.42%，P99干扰率从28.33%下降到1.65%。
 
-#### 内存混部测试结果示例
+### 内存混部测试结果示例
 
-####### Sysbench Interference Analysis
+#### Sysbench Interference Analysis
 
 * Original Data
 
@@ -181,9 +181,9 @@ Formula: Interference Rate = (Online - Test) / Online x 100%
 * 结论：混部内存隔离后，QPS干扰率从4.32%下降到-2.07%，平均时延干扰率从4.51%下降到-2.01%，P95时延干扰率从26.38%下降到5.55%。
 
 
-#### IO混部测试结果示例
+### IO混部测试结果示例
 
-###### Sysbench Interference Analysis
+#### Sysbench Interference Analysis
 
 * Original Data
 
@@ -204,7 +204,7 @@ Formula: Interference Rate = (Online - Test) / Online x 100%
 
 * 结论：混部IO隔离后，在线业务QOS干扰率从77.12%下降到23.19%，平均时延干扰率从337.49%下降到30.19%，P95时延干扰率从307.36%下降到33.39%。
 
-#### 网络混部测试结果示例
+### 网络混部测试结果示例
 
 | Test Scenario | Network Bandwidth (Gbits/sec) | Interference Rate |
 | ------------- | ----------------------------- | ----------------- |
@@ -213,7 +213,6 @@ Formula: Interference Rate = (Online - Test) / Online x 100%
 | Co-deployment | 0.87                          | 6.45%             |
 
 * 结论：混部网络隔离后，在线干扰率从54.84%下降到6.45%。
-
 
 ## SOFARPC 介绍
 
@@ -269,11 +268,7 @@ SOFARPC 采用经典的服务注册/发现/调用架构，核心组件包括服�
 
 通过 CPU QoS 隔离（调度抢占压制、SMT 驱离）前后干扰率的对比，量化评估混部特性对在线业务的保护效果。
 
-
-
-
-
-缩略语清单：
+## 缩略语清单
 
 | 缩略语      | 英文全名                    | 中文解释                                                     |
 | ----------- | --------------------------- | ------------------------------------------------------------ |
