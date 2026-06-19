@@ -40,6 +40,7 @@
 
 1、cpu抢占压制
 通过 cpu.qos_level 标识任务优先级：
+
 * 在线任务：0
 * 离线任务：-1
 配置示例：
@@ -50,6 +51,7 @@ echo 0 > cpu.qos_level    # 设为在线
 ```
 
 2、smt驱离
+
 * 依赖cpu.qos_level配置，默认使能
 * 关闭方式：内核启动参数cmdline配置添加nosmtexpell。
 
@@ -57,7 +59,6 @@ echo 0 > cpu.qos_level    # 设为在线
 
 * 在线业务：sofarpc-benchmark
 特点：java工具，业务时延敏感，开源可修改
-
 * 离线业务：stress-ng
 特点：稳定模拟各种cpu利用率的任务
 
@@ -66,11 +67,13 @@ echo 0 > cpu.qos_level    # 设为在线
 #### 内存 QOS隔离配置
 
 1.OOM分级查杀
+
 * 配置使能
 
 ```bash
 echo 1 > /proc/sys/vm/memcg_qos_enable
 ```
+
 * 配置在离线标识(在线：0 , 离线：-1)
 
 ```bash
@@ -80,6 +83,7 @@ echo 0 > cpu.qos_level    # 设为在线
 
 2.内存异步回收
 内存超过memory.high*memory.high_async_ratio/100的时候开始异步回收，回收到memory.high*(memory.high_async_ratio–10)/100这个值结束。
+
 * 配置memory.high                                //参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
 * 配置memory.high_async_ratio                    //警戒水位线和安全水位线设置
 
@@ -96,6 +100,7 @@ echo 0 > cpu.qos_level    # 设为在线
 
 1.IO Cost方案
 IO cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
+
 * cgroup根节点设置blkio.cost.qos
 
 ```bash
