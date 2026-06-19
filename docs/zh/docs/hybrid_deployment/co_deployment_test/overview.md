@@ -43,6 +43,7 @@
 * 在线任务：0
 * 离线任务：-1
 配置示例：
+
 ```bash
 echo -1 > cpu.qos_level   # 设为离线
 echo 0 > cpu.qos_level    # 设为在线
@@ -66,10 +67,12 @@ echo 0 > cpu.qos_level    # 设为在线
 
 1.OOM分级查杀
 * 配置使能
+
 ```bash
 echo 1 > /proc/sys/vm/memcg_qos_enable
 ```
 * 配置在离线标识(在线：0 , 离线：-1)
+
 ```bash
 echo -1 > cpu.qos_level   # 设为离线
 echo 0 > cpu.qos_level    # 设为在线
@@ -94,19 +97,26 @@ echo 0 > cpu.qos_level    # 设为在线
 1.IO Cost方案
 IO cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
 * cgroup根节点设置blkio.cost.qos
+
 ```bash
 echo "8:0 enable=1 min=100.00 max=100.00" > blkio.cost.qos // 8:0指定块设备号maj:mi
 ```
+
 * cgroup根节点设置blkio.cost.model
+
 ```bash
 echo "8:0 ctrl=user model=linear rbps=1057334144 rseqiops=175363 rrandiops=180459 wbps=500824931 wseqiops=75499 wrandiops=69629" > blkio.cost.model
 ```
+
 * 设置具体cgroup节点blkio.cost.weight
 取值范围：[1, 10000]，默认值：100
+
 ```bash
 echo "8:0 100" > blkio.cost.weight      //配置设备8:0 weight为100; 例如在线设置100，离线设置10。
 ```
+
 * 设置进程到cgroup子节点cgroup.procs
+
 ```bash
 echo 1053 > cgroup.procs
 ```            
@@ -116,10 +126,13 @@ echo 1053 > cgroup.procs
 2.IO Inflight方案
 IO inflight测试需要初步测试确定rlat/wlat（读写IO延时阈值）的基准值。
 * 配置QOS控制策略
+
 ```bash
 echo "8:0 enable=1 qos_enable=1 rlat=5000000 rpct=95 wlat=5000000 wpct=95 flags=0" > /sys/fs/cgroup/blkio/blkio.inf.qos
 ```
+
 * 权重配置
+
 ```bash
 echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
 ```
@@ -136,22 +149,31 @@ echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
 #### 网络 QOS隔离配置
 
 1、配置在离线标识（在线：0 ，离线：-1）
+
 ```bash
 bwmcli -s /sys/fs/cgroup/net_cls/xxxx -1
 ```
+
 2、限制离线网络带宽
+
 ```bash
 bwmcli -s bandwidth 10MB,1GB //有在线业务10MB，无在线业务是1GB（根据实际网络带宽修改）
 ```
+
 3、配置当在线达到20MB时，开始限制离线带宽10MB以内;若低于20MB则限制离线1GB以内
+
 ```bash
 bwmcli -s waterline 20MB
 ```
+
 4、使能网络带宽隔离配置
+
 ```bash
 bwmcli -e eth0 -e eth1
 ```
+
 5、去使能网络带宽隔离配置
+
 ```bash
 bwmcli -d eth0 -d eth1
 ```
