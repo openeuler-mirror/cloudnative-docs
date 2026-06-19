@@ -113,6 +113,12 @@ echo "8:0 enable=1 min=100.00 max=100.00" > blkio.cost.qos // 8:0指定块设备
 echo "8:0 ctrl=user model=linear rbps=1057334144 rseqiops=175363 rrandiops=180459 wbps=500824931 wseqiops=75499 wrandiops=69629" > blkio.cost.model
 ```
 
+其中，模型参数可以通过如下命令获取rbos、rseqiops、rrandiops、wbps、wseqiops、wrandiops等参数(iscost_coef_gen.py来自openEuler-6.6内核源码：tools/cgroup/iscost_coef_gen.py,sdx根据lsblk实际查询到的硬盘盘符调整，譬如：sdm)：
+
+```bash
+python iscost_coef_gen.py --testdev /dev/sdx
+```
+
 * 设置具体cgroup节点blkio.cost.weight
 取值范围：[1, 10000]，默认值：100
 
@@ -216,20 +222,20 @@ bwmcli -d eth0 -d eth1
 
 | Test Name | transactions | avg(ms) | p95(ms) |
 | ---- | ---- | ---- | ---- |
-| Online Test Only | 65613 | 292.70 | 404.61 |
-| Direct deployment Test | 62780 | 305.89 | 511.33 |
-| Co-Deployment Test | 66969 | 286.83 | 427.07 |
+| Online Test Only | 173212 | 560.46 | 780.61 |
+| Direct deployment Test | 126385 | 1799.68 | 2711.56 |
+| Co-Deployment Test | 169118 | 582.35 | 801.72 |
 
 * 干扰率 (相比Online Test Only)
 
 | Test Name | transactions | avg | p95 |
 | ---- | ---- | ---- | ---- |
-| Direct deployment Test | 4.32% | 4.51% | 26.38% |
-| Co-Deployment Test | -2.07% | -2.01% | 5.55% |
+| Direct deployment Test | 27.03% | 221.07% | 247.36% |
+| Co-Deployment Test | 2.36% | 3.91% | 2.70% |
 
 公式: 干扰率 = (Online - Test) / Online x 100%
 
-* 结论：混部内存隔离后，QPS干扰率从4.32%下降到-2.07%，平均时延干扰率从4.51%下降到-2.01%，P95时延干扰率从26.38%下降到5.55%。
+* 结论：混部内存隔离后，QPS干扰率从27.03%下降到2.36%，平均时延干扰率从221.07%下降到3.91%，P95时延干扰率从247.36%下降到2.70%。
 
 ### IO混部测试结果示例
 
