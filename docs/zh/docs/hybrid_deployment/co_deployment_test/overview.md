@@ -113,7 +113,7 @@ echo "8:0 enable=1 min=100.00 max=100.00" > blkio.cost.qos // 8:0指定块设备
 echo "8:0 ctrl=user model=linear rbps=1057334144 rseqiops=175363 rrandiops=180459 wbps=500824931 wseqiops=75499 wrandiops=69629" > blkio.cost.model
 ```
 
-其中，模型参数可以通过如下命令获取rbos、rseqiops、rrandiops、wbps、wseqiops、wrandiops等参数(iscost_coef_gen.py来自openEuler-6.6内核源码：tools/cgroup/iscost_coef_gen.py,sdx根据lsblk实际查询到的硬盘盘符调整，譬如：sdm)：
+其中，模型参数可以通过如下命令获取rbps、rseqiops、rrandiops、wbps、wseqiops、wrandiops等参数(iscost_coef_gen.py来自openEuler-6.6内核源码：tools/cgroup/iscost_coef_gen.py,sdx根据lsblk实际查询到的硬盘盘符调整，譬如：sdm)：
 
 ```bash
 python iscost_coef_gen.py --testdev /dev/sdx
