@@ -38,11 +38,12 @@
 
 #### CPU QOS隔离配置
 
-1、cpu抢占压制
+1. CPU抢占压制
 通过 cpu.qos_level 标识任务优先级：
 
 * 在线任务：0
 * 离线任务：-1
+
 配置示例：
 
 ```bash
@@ -50,7 +51,7 @@ echo -1 > cpu.qos_level   # 设为离线
 echo 0 > cpu.qos_level    # 设为在线
 ```
 
-2、smt驱离
+2. smt驱离
 
 * 依赖cpu.qos_level配置，默认使能
 * 关闭方式：内核启动参数cmdline配置添加nosmtexpell。
@@ -66,7 +67,7 @@ echo 0 > cpu.qos_level    # 设为在线
 
 #### 内存 QOS隔离配置
 
-1.OOM分级查杀
+1. OOM分级查杀
 
 * 配置使能
 
@@ -81,8 +82,8 @@ echo -1 > cpu.qos_level   # 设为离线
 echo 0 > cpu.qos_level    # 设为在线
 ```
 
-2.内存异步回收
-内存超过memory.high*memory.high_async_ratio/100的时候开始异步回收，回收到memory.high*(memory.high_async_ratio–10)/100这个值结束。
+2. 内存异步回收
+内存超过`memory.high * memory.high_async_ratio / 100`的时候开始异步回收，回收到`memory.high * (memory.high_async_ratio–10) / 100`这个值结束。
 
 * 配置memory.high                                //参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
 * 配置memory.high_async_ratio                    //警戒水位线和安全水位线设置
@@ -98,8 +99,8 @@ echo 0 > cpu.qos_level    # 设为在线
 
 #### IO QOS隔离配置
 
-1.IO Cost方案
-IO cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
+1. IO Cost方案
+IO Cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
 
 * cgroup根节点设置blkio.cost.qos
 
@@ -134,7 +135,7 @@ echo 1053 > cgroup.procs
 
 *注：只在叶子节点绑定进程，在中间节点绑定不生效。两个cgroup组任务竞争状态下，限制才有效果。*
 
-2.IO Inflight方案
+2. IO Inflight方案
 IO inflight测试需要初步测试确定rlat/wlat（读写IO延时阈值）的基准值。
 * 配置QOS控制策略
 
@@ -159,31 +160,31 @@ echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
 
 #### 网络 QOS隔离配置
 
-1、配置在离线标识（在线：0 ，离线：-1）
+1. 配置在离线标识（在线：0 ，离线：-1）
 
 ```bash
 bwmcli -s /sys/fs/cgroup/net_cls/xxxx -1
 ```
 
-2、限制离线网络带宽
+2. 限制离线网络带宽
 
 ```bash
 bwmcli -s bandwidth 10MB,1GB //有在线业务10MB，无在线业务是1GB（根据实际网络带宽修改）
 ```
 
-3、配置当在线达到20MB时，开始限制离线带宽10MB以内;若低于20MB则限制离线1GB以内
+3. 配置当在线达到20MB时，开始限制离线带宽10MB以内;若低于20MB则限制离线1GB以内
 
 ```bash
 bwmcli -s waterline 20MB
 ```
 
-4、使能网络带宽隔离配置
+4. 使能网络带宽隔离配置
 
 ```bash
 bwmcli -e eth0 -e eth1
 ```
 
-5、去使能网络带宽隔离配置
+5. 去使能网络带宽隔离配置
 
 ```bash
 bwmcli -d eth0 -d eth1
