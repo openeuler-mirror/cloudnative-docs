@@ -142,7 +142,7 @@
 
         ```bash
         echo 1053 > cgroup.procs
-        ```            
+        ```
 
         注：只在叶子节点绑定进程，在中间节点绑定不生效。两个cgroup组任务竞争状态下，限制才有效果。*
 
@@ -279,11 +279,11 @@
 
 ### 网络混部测试结果示例
 
-    | Test Scenario | Network Bandwidth (Gbits/sec) | Interference Rate |
-    | ------------- | ----------------------------- | ----------------- |
-    | Baseline      | 0.93                          | -                 |
-    | Direct Deploy | 0.42                          | 54.84%            |
-    | Co-deployment | 0.87                          | 6.45%             |
+| Test Scenario | Network Bandwidth (Gbits/sec) | Interference Rate |
+| ------------- | ----------------------------- | ----------------- |
+| Baseline      | 0.93                          | -                 |
+| Direct Deploy | 0.42                          | 54.84%            |
+| Co-deployment | 0.87                          | 6.45%             |
 
 * 结论：混部网络隔离后，在线干扰率从54.84%下降到6.45%。
 
