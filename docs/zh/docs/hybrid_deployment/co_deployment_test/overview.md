@@ -85,14 +85,18 @@ echo 0 > cpu.qos_level    # 设为在线
 2. 内存异步回收
 内存超过`memory.high * memory.high_async_ratio / 100`的时候开始异步回收，回收到`memory.high * (memory.high_async_ratio–10) / 100`这个值结束。
 
-* 配置memory.high                                //参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
-* 配置memory.high_async_ratio                    //警戒水位线和安全水位线设置
+* 配置memory.high：参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
+
+* 配置memory.high_async_ratio：警戒水位线和安全水位线设置
 
 #### 内存测试套工具选取
 
 * 在线业务：mysql + sysbenchmark
+
 特点：业务性能对内存使用敏感
+
 * 离线业务：stress-ng
+
 特点：稳定模拟持续消耗内存任务
 
 ### IO混部测试
