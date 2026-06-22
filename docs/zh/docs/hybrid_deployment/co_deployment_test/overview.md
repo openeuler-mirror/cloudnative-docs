@@ -130,7 +130,7 @@
         python iscost_coef_gen.py --testdev /dev/sdx
         ```
 
-        *注：脚本`iscost_coef_gen.py`来自openEuler-6.6内核源码，路径：`tools/cgroup/iscost_coef_gen.py`。另外，请根据lsblk实际查询到的硬盘盘符替换命令中的设备路径，譬如：sdm。
+        注：脚本`iscost_coef_gen.py`来自openEuler-6.6内核源码，路径：`tools/cgroup/iscost_coef_gen.py`。另外，请根据lsblk实际查询到的硬盘盘符替换命令中的设备路径，譬如：sdm。
 
     * 设置具体cgroup节点blkio.cost.weight，取值范围：[1, 10000]，默认值：100。
 
@@ -144,19 +144,19 @@
         echo 1053 > cgroup.procs
         ```            
 
-        *注：只在叶子节点绑定进程，在中间节点绑定不生效。两个cgroup组任务竞争状态下，限制才有效果。*
+        注：只在叶子节点绑定进程，在中间节点绑定不生效。两个cgroup组任务竞争状态下，限制才有效果。*
 
 2. IO Inflight方案
 
     IO inflight测试需要初步测试确定rlat/wlat（读写IO延时阈值）的基准值。
 
-    ○ 配置QOS控制策略
+    * 配置QOS控制策略
 
         ```bash
         echo "8:0 enable=1 qos_enable=1 rlat=5000000 rpct=95 wlat=5000000 wpct=95 flags=0" > /sys/fs/cgroup/blkio/blkio.inf.qos
         ```
 
-    ○ 权重配置
+    * 权重配置
 
         ```bash
         echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
