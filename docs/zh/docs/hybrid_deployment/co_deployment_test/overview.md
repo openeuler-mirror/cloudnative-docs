@@ -39,29 +39,33 @@
 #### CPU QOS隔离配置
 
 1. CPU抢占压制
-通过 cpu.qos_level 标识任务优先级：
 
-* 在线任务：0
-* 离线任务：-1
+    通过 cpu.qos_level 标识任务优先级：
 
-配置示例：
+    * 在线任务：0
+    * 离线任务：-1
 
-```bash
-echo -1 > cpu.qos_level   # 设为离线
-echo 0 > cpu.qos_level    # 设为在线
-```
+    配置示例：
+
+    ```bash
+    echo -1 > cpu.qos_level   # 设为离线
+    echo 0 > cpu.qos_level    # 设为在线
+    ```
 
 2. smt驱离
 
-* 依赖cpu.qos_level配置，默认使能
-* 关闭方式：内核启动参数cmdline配置添加nosmtexpell。
+    * 依赖cpu.qos_level配置，默认使能
+    * 关闭方式：内核启动参数cmdline配置添加nosmtexpell。
 
 #### CPU测试套工具选取
 
 * 在线业务：sofarpc-benchmark
-特点：java工具，业务时延敏感，开源可修改
+
+    特点：java工具，业务时延敏感，开源可修改
+
 * 离线业务：stress-ng
-特点：稳定模拟各种cpu利用率的任务
+
+    特点：稳定模拟各种cpu利用率的任务
 
 ### 内存混部测试
 
@@ -69,103 +73,104 @@ echo 0 > cpu.qos_level    # 设为在线
 
 1. OOM分级查杀
 
-* 配置使能
+    * 配置使能
 
-```bash
-echo 1 > /proc/sys/vm/memcg_qos_enable
-```
+        ```bash
+        echo 1 > /proc/sys/vm/memcg_qos_enable
+        ```
 
-* 配置在离线标识(在线：0 , 离线：-1)
+    * 配置在离线标识(在线：0 , 离线：-1)
 
-```bash
-echo -1 > cpu.qos_level   # 设为离线
-echo 0 > cpu.qos_level    # 设为在线
-```
+        ```bash
+        echo -1 > cpu.qos_level   # 设为离线
+        echo 0 > cpu.qos_level    # 设为在线
+        ```
 
 2. 内存异步回收
-内存超过`memory.high * memory.high_async_ratio / 100`的时候开始异步回收，回收到`memory.high * (memory.high_async_ratio–10) / 100`这个值结束。
 
-* 配置memory.high：参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
+    内存超过`memory.high * memory.high_async_ratio / 100`的时候开始异步回收，回收到`memory.high * (memory.high_async_ratio–10) / 100`这个值结束。
 
-* 配置memory.high_async_ratio：警戒水位线和安全水位线设置
+    * 配置memory.high：参考memory.limit_in_bytes、memory.max_usage_in_bytes配置，基于业务实际调试
+
+    * 配置memory.high_async_ratio：警戒水位线和安全水位线设置
 
 #### 内存测试套工具选取
 
 * 在线业务：mysql + sysbenchmark
 
-特点：业务性能对内存使用敏感
+    特点：业务性能对内存使用敏感
 
 * 离线业务：stress-ng
 
-特点：稳定模拟持续消耗内存任务
+    特点：稳定模拟持续消耗内存任务
 
 ### IO混部测试
 
 #### IO QOS隔离配置
 
 1. IO Cost方案
-IO Cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
 
-* cgroup根节点设置blkio.cost.qos
+    IO Cost执行获取rbps/rseqiops/rrandiops/wbps/wseqiops/wrandiops参数会将整个/dev/sda刷一遍，因此测试需要单独隔离出一块盘
 
-```bash
-echo "8:0 enable=1 min=100.00 max=100.00" > blkio.cost.qos // 8:0指定块设备号maj:mi
-```
+    * cgroup根节点设置blkio.cost.qos
 
-* cgroup根节点设置blkio.cost.model
+        ```bash
+        echo "8:0 enable=1 min=100.00 max=100.00" > blkio.cost.qos // 8:0指定块设备号maj:mi
+        ```
 
-```bash
-echo "8:0 ctrl=user model=linear rbps=1057334144 rseqiops=175363 rrandiops=180459 wbps=500824931 wseqiops=75499 wrandiops=69629" > blkio.cost.model
-```
+    * cgroup根节点设置blkio.cost.model
 
-其中，模型参数可以通过如下命令获取rbps、rseqiops、rrandiops、wbps、wseqiops、wrandiops等参数(iscost_coef_gen.py来自openEuler-6.6内核源码：tools/cgroup/iscost_coef_gen.py,sdx根据lsblk实际查询到的硬盘盘符调整，譬如：sdm)：
-其中，rbps、rseqiops、rrandiops、wbps、wseqiops、wrandiops等参数可以通过以下命令获取：
+        ```bash
+        echo "8:0 ctrl=user model=linear rbps=1057334144 rseqiops=175363 rrandiops=180459 wbps=500824931 wseqiops=75499 wrandiops=69629" > blkio.cost.model
+        ```
 
-```bash
-python iscost_coef_gen.py --testdev /dev/sdx
-```
+        其中，rbps、rseqiops、rrandiops、wbps、wseqiops、wrandiops等参数可以通过以下命令获取：
 
-*注：脚本`iscost_coef_gen.py`来自openEuler-6.6内核源码，路径：`tools/cgroup/iscost_coef_gen.py`。另外，请根据lsblk实际查询到的硬盘盘符替换命令中的设备路径，譬如：sdm。
+        ```bash
+        python iscost_coef_gen.py --testdev /dev/sdx
+        ```
 
-* 设置具体cgroup节点blkio.cost.weight，取值范围：[1, 10000]，默认值：100。
+        *注：脚本`iscost_coef_gen.py`来自openEuler-6.6内核源码，路径：`tools/cgroup/iscost_coef_gen.py`。另外，请根据lsblk实际查询到的硬盘盘符替换命令中的设备路径，譬如：sdm。
 
-```bash
-echo "8:0 100" > blkio.cost.weight      //配置设备8:0 weight为100; 例如在线设置100，离线设置10。
-```
+    * 设置具体cgroup节点blkio.cost.weight，取值范围：[1, 10000]，默认值：100。
 
-* 设置进程到cgroup子节点cgroup.procs
+        ```bash
+        echo "8:0 100" > blkio.cost.weight      //配置设备8:0 weight为100; 例如在线设置100，离线设置10。
+        ```
 
-```bash
-echo 1053 > cgroup.procs
-```            
+    * 设置进程到cgroup子节点cgroup.procs
 
-*注：只在叶子节点绑定进程，在中间节点绑定不生效。两个cgroup组任务竞争状态下，限制才有效果。*
+        ```bash
+        echo 1053 > cgroup.procs
+        ```            
+
+        *注：只在叶子节点绑定进程，在中间节点绑定不生效。两个cgroup组任务竞争状态下，限制才有效果。*
 
 2. IO Inflight方案
 
-IO inflight测试需要初步测试确定rlat/wlat（读写IO延时阈值）的基准值。
+    IO inflight测试需要初步测试确定rlat/wlat（读写IO延时阈值）的基准值。
 
-○ 配置QOS控制策略
+    ○ 配置QOS控制策略
 
-```bash
-echo "8:0 enable=1 qos_enable=1 rlat=5000000 rpct=95 wlat=5000000 wpct=95 flags=0" > /sys/fs/cgroup/blkio/blkio.inf.qos
-```
+        ```bash
+        echo "8:0 enable=1 qos_enable=1 rlat=5000000 rpct=95 wlat=5000000 wpct=95 flags=0" > /sys/fs/cgroup/blkio/blkio.inf.qos
+        ```
 
-○ 权重配置
+    ○ 权重配置
 
-```bash
-echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
-```
+        ```bash
+        echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
+        ```
 
 #### IO测试套选取
 
 * 在线业务：mysql + sysbenchmark
 
-特点：业务性能对IO带宽敏感
+    特点：业务性能对IO带宽敏感
 
 * 离线业务：fio
 
-特点：标准测试工具，稳定模拟持续消耗IO带宽任务
+    特点：标准测试工具，稳定模拟持续消耗IO带宽任务
 
 ### 网络混部测试
 
@@ -173,33 +178,33 @@ echo "8:0 0" > /sys/fs/cgroup/blkio/$cgroup_path/blkio.inf.weight
 
 1. 配置在离线标识（在线：0 ，离线：-1）
 
-```bash
-bwmcli -s /sys/fs/cgroup/net_cls/xxxx -1
-```
+    ```bash
+    bwmcli -s /sys/fs/cgroup/net_cls/xxxx -1
+    ```
 
 2. 限制离线网络带宽
 
-```bash
-bwmcli -s bandwidth 10MB,1GB //有在线业务10MB，无在线业务是1GB（根据实际网络带宽修改）
-```
+    ```bash
+    bwmcli -s bandwidth 10MB,1GB //有在线业务10MB，无在线业务是1GB（根据实际网络带宽修改）
+    ```
 
 3. 配置当在线达到20MB时，开始限制离线带宽10MB以内;若低于20MB则限制离线1GB以内
 
-```bash
-bwmcli -s waterline 20MB
-```
+    ```bash
+    bwmcli -s waterline 20MB
+    ```
 
 4. 使能网络带宽隔离配置
 
-```bash
-bwmcli -e eth0 -e eth1
-```
+    ```bash
+    bwmcli -e eth0 -e eth1
+    ```
 
 5. 去使能网络带宽隔离配置
 
-```bash
-bwmcli -d eth0 -d eth1
-```
+    ```bash
+    bwmcli -d eth0 -d eth1
+    ```
 
 #### 网络测试套工具选取
 
@@ -215,18 +220,18 @@ bwmcli -d eth0 -d eth1
 
 * 原始数据
 
-| Test Name | thrpt(ops/ms) | avgt(ms/op) | p99(ms/op) |
-| ---- | ---- | ---- | ---- |
-| Online Test Only | 0.423 | 37.765 | 47.645 |
-| Direct deployment Test | 0.363 | 44.282 | 61.145 |
-| Co-Deployment Test | 0.403 | 39.435 | 48.431 |
+    | Test Name | thrpt(ops/ms) | avgt(ms/op) | p99(ms/op) |
+    | ---- | ---- | ---- | ---- |
+    | Online Test Only | 0.423 | 37.765 | 47.645 |
+    | Direct deployment Test | 0.363 | 44.282 | 61.145 |
+    | Co-Deployment Test | 0.403 | 39.435 | 48.431 |
 
 * 干扰率 (相比Online Test Only)
 
-| Test Name | thrpt | avgt | p99 |
-| ---- | ---- | ---- | ---- |
-| Direct deployment Test | 14.18% | 17.26% | 28.33% |
-| Co-Deployment Test | 4.73% | 4.42% | 1.65% |
+    | Test Name | thrpt | avgt | p99 |
+    | ---- | ---- | ---- | ---- |
+    | Direct deployment Test | 14.18% | 17.26% | 28.33% |
+    | Co-Deployment Test | 4.73% | 4.42% | 1.65% |
 
 结论：混部CPU隔离后，在线业务QPS干扰率从14.18%下降到4.73%，平均时延干扰从17.26%下降到4.42%，P99干扰率从28.33%下降到1.65%。
 
@@ -234,18 +239,18 @@ bwmcli -d eth0 -d eth1
 
 * 原始数据
 
-| Test Name | transactions | avg(ms) | p95(ms) |
-| ---- | ---- | ---- | ---- |
-| Online Test Only | 173212 | 560.46 | 780.61 |
-| Direct deployment Test | 126385 | 1799.68 | 2711.56 |
-| Co-Deployment Test | 169118 | 582.35 | 801.72 |
+    | Test Name | transactions | avg(ms) | p95(ms) |
+    | ---- | ---- | ---- | ---- |
+    | Online Test Only | 173212 | 560.46 | 780.61 |
+    | Direct deployment Test | 126385 | 1799.68 | 2711.56 |
+    | Co-Deployment Test | 169118 | 582.35 | 801.72 |
 
 * 干扰率 (相比Online Test Only)
 
-| Test Name | transactions | avg | p95 |
-| ---- | ---- | ---- | ---- |
-| Direct deployment Test | 27.03% | 221.07% | 247.36% |
-| Co-Deployment Test | 2.36% | 3.91% | 2.70% |
+    | Test Name | transactions | avg | p95 |
+    | ---- | ---- | ---- | ---- |
+    | Direct deployment Test | 27.03% | 221.07% | 247.36% |
+    | Co-Deployment Test | 2.36% | 3.91% | 2.70% |
 
 公式: 干扰率 = (Online - Test) / Online x 100%
 
@@ -255,18 +260,18 @@ bwmcli -d eth0 -d eth1
 
 * 原始数据
 
-| Test Name | transactions | avg(ms) | p95(ms) |
-| ---- | ---- | ---- | ---- |
-| Online Test Only | 5454 | 176.17 | 282.25 |
-| Direct deployment Test | 1248 | 770.72 | 1149.76 |
-| Co-Deployment Test | 4189 | 229.35 | 376.49 |
+    | Test Name | transactions | avg(ms) | p95(ms) |
+    | ---- | ---- | ---- | ---- |
+    | Online Test Only | 5454 | 176.17 | 282.25 |
+    | Direct deployment Test | 1248 | 770.72 | 1149.76 |
+    | Co-Deployment Test | 4189 | 229.35 | 376.49 |
 
 * 干扰率(相比Online Test Only)
 
-| Test Name | transactions | avg | p95 |
-| ---- | ---- | ---- | ---- |
-| Direct deployment Test | 77.12% | 337.49% | 307.36% |
-| Co-Deployment Test | 23.19% | 30.19% | 33.39% |
+    | Test Name | transactions | avg | p95 |
+    | ---- | ---- | ---- | ---- |
+    | Direct deployment Test | 77.12% | 337.49% | 307.36% |
+    | Co-Deployment Test | 23.19% | 30.19% | 33.39% |
 
 公式: 干扰率 = (Online - Test) / Online x 100%
 
@@ -274,11 +279,11 @@ bwmcli -d eth0 -d eth1
 
 ### 网络混部测试结果示例
 
-| Test Scenario | Network Bandwidth (Gbits/sec) | Interference Rate |
-| ------------- | ----------------------------- | ----------------- |
-| Baseline      | 0.93                          | -                 |
-| Direct Deploy | 0.42                          | 54.84%            |
-| Co-deployment | 0.87                          | 6.45%             |
+    | Test Scenario | Network Bandwidth (Gbits/sec) | Interference Rate |
+    | ------------- | ----------------------------- | ----------------- |
+    | Baseline      | 0.93                          | -                 |
+    | Direct Deploy | 0.42                          | 54.84%            |
+    | Co-deployment | 0.87                          | 6.45%             |
 
 * 结论：混部网络隔离后，在线干扰率从54.84%下降到6.45%。
 
