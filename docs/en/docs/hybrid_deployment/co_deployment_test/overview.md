@@ -132,7 +132,7 @@ This section focuses on the installation and deployment methods of the hybrid de
         python iscost_coef_gen.py --testdev /dev/sdx
         ```
 
-        Note: The `iscost_coef_gen.py` script is sourced from the openEuler-6.6 kernel source code, located at `tools/cgroup/iscost_coef_gen`.py. In addition, replace the device path in the command (for example, `sdm`) based on the actual drive name queried via `lsblk`.
+        Note: The `iscost_coef_gen.py` script is sourced from the openEuler-6.6 kernel source code, located at `tools/cgroup/iscost_coef_gen.py`. In addition, replace the device path in the command (for example, `sdm`) based on the actual drive name queried via `lsblk`.
 
     * Configure `blkio.cost.weight` for the specific cgroup node. The value ranges from 1 to 10000, with a default value of `100`.
 
@@ -345,7 +345,7 @@ By comparing the interference rates before and after implementing CPU QoS isolat
 
 ## Acronyms and Abbreviations
 
-| Acronym/Abbreviation | Full Name | Description s|
+| Acronym/Abbreviation | Full Name | Description|
 | ----------- | --------------------------- | ------------------------------------------------------------ |
 | SMT         | Simultaneous Multithreading | Simultaneous Multithreading (Hyper-threading) refers to running multiple logical threads in parallel within a single physical CPU core, sharing hardware resources such as core execution units and caches. |
 | OOM         | Out of Memory               | A state where both system available memory and swap space are exhausted, triggering the kernel's memory reclamation or process termination (OOM killer) mechanism. |
