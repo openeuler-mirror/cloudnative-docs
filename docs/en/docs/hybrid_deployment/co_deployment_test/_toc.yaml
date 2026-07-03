@@ -1,0 +1,6 @@
+label: Hybrid Deployment Test Guide
+isManual: true
+description: Standardized testing scheme for hybrid deployment scenarios, covering CPU, memory, I/O, and network resources.
+sections:
+  - label: Overview
+    href: ./overview.md
