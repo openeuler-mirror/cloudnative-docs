@@ -19,7 +19,7 @@
 
 ### 环境准备
 
-* 安装 openEuler 系统，安装方法参考[安装指南](https://docs.openeuler.openatom.cn/zh/docs/24.03_LTS_SP2/server/installation_upgrade/installation/installation_on_servers.html)。
+* 安装 openEuler 系统，安装方法参考[安装指南](https://docs.openeuler.openatom.cn/zh/docs/26.09/server/installation_upgrade/installation/installation_preparations.html)。
 * 安装并部署 kubernetes，安装及部署方法参考《Kubernetes 集群部署指南》。
 * 安装docker或isulad容器引擎，若采用isulad容器引擎，需同时安装isula-build容器镜像构建工具。
 
