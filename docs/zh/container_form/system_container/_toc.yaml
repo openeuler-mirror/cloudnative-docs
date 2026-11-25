@@ -7,7 +7,6 @@ sections:
   - label: 安装指导
     href: ./installation_guideline.md
   - label: 使用指南
-    href: ./usage_guide.md
     sections:
       - label: 指定rootfs创建容器
         href: ./specifying_rootfs_to_create_a_container.md

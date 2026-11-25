@@ -7,7 +7,6 @@ sections:
   - label: Preparing VMs
     href: ./preparing_vms.md
   - label: Manual Cluster Deployment
-    href: ./deploying_a_kubernetes_cluster_manually.md
     sections:
       - label: Installing the Kubernetes Software Package
         href: ./installing_the_kubernetes_software_package.md
@@ -20,7 +19,6 @@ sections:
       - label: Deploying a Node Component
         href: ./deploying_a_node_component.md
   - label: Automatic Cluster Deployment
-    href: ./eggo_automatic_deployment.md
     sections:
       - label: Tool Introduction
         href: ./eggo_tool_introduction.md
