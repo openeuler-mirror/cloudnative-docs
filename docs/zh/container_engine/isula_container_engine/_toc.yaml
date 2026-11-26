@@ -5,7 +5,6 @@ sections:
   - label: 概述
     href: ./overview.md
   - label: 安装、升级与卸载
-    href: ./installation_upgrade_uninstallation.md
     sections:
       - label: 安装与配置
         href: ./installation_configuration.md
@@ -14,7 +13,6 @@ sections:
       - label: 卸载
         href: ./uninstallation.md
   - label: 使用指南
-    href: ./application_scenarios.md
     sections:
       - label: 容器管理
         href: ./container_management.md
