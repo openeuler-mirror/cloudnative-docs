@@ -89,7 +89,7 @@ Options:
   | primary_groups | [可选项] 用户主组(默认为用户同名组) |
   | groups | [可选项] 用户附加组 |
 
-**注意**：添加用户会默认创建用户同名组，配置用户附加组时，若组不存在会报错失败。若有特殊配置需求，用户可通过[chroot_script](#chroot-script)脚本自行实现。
+**注意**：添加用户会默认创建用户同名组，配置用户附加组时，若组不存在会报错失败。若有特殊配置需求，用户可通过[chroot_script](#chroot_script)脚本自行实现。
 
 #### copy_files
 
@@ -101,7 +101,7 @@ Options:
   | src | 源文件路径 |
   | create_dir | [可选项]拷贝前创建文件夹 |
 
-**注意**：拷贝文件无法保留权限，如果需要特殊权限，可借助[chroot_script](#chroot-script)脚本自行实现。
+**注意**：拷贝文件无法保留权限，如果需要特殊权限，可借助[chroot_script](#chroot_script)脚本自行实现。
 
 #### grub
 
@@ -282,7 +282,7 @@ version = "v1"
 
 #### 使用示例
 
-* 首先需要修改```kbimg.toml```中```pxe_config```的配置，对相关参数进行配置，详细参数可见[参数说明](#pxe-config)，ip目前仅支持ipv4，配置示例如下
+* 首先需要修改```kbimg.toml```中```pxe_config```的配置，对相关参数进行配置，详细参数可见[参数说明](#pxe_config)，ip目前仅支持ipv4，配置示例如下
 
   ```toml
   [pxe_config]
