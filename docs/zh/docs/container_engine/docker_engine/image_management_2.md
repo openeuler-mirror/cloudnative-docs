@@ -272,7 +272,7 @@ busybox             latest              e02e811dd08f        2 years ago         
 
 用法：**docker login \[OPTIONS\] \[SERVER\]**
 
-功能：登录到一个镜像服务库，没有指定server时，默认登录到<https://index.docker.io/v1/>
+功能：登录到一个镜像服务库。
 
 选项：
 
@@ -292,7 +292,7 @@ $ sudo docker login
 
 用法：**docker logout \[SERVER\]**
 
-功能：从一个镜像服务器中登出，没有指定server时，默认登出<https://index.docker.io/v1/>
+功能：从一个镜像服务器中登出。
 
 选项：无
 
